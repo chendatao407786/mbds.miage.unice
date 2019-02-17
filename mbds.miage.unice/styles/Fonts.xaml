@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:mbds.miage.unice">
+    <FontFamily x:Key="Roboto-light">pack://application;,,,/fonts/#Roboto Light</FontFamily>
+    <FontFamily x:Key="Roboto-Bold">pack://application;,,,/fonts/#Roboto Bold</FontFamily>
+    <FontFamily x:Key="Roboto-Regular">pack://application;,,,/fonts/#Roboto Regular</FontFamily>
+    <FontFamily x:Key="Roboto-Thin">pack://application;,,,/fonts/#Roboto Thin</FontFamily>
+</ResourceDictionary>

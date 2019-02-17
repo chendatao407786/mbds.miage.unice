@@ -1,4 +1,6 @@
-﻿using System;
+﻿using mbds.miage.unice.src.util;
+using mbds.miage.unice.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,18 +24,22 @@ namespace mbds.miage.unice
     {
         public MainWindow()
         {
-            this.DataContext = this;
             InitializeComponent();
+            this.DataContext = new WindowViewModel(this);
         }
 
-        private void TxtUserEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        //protected override void OnSourceInitialized(EventArgs e)
+        //{
+        //    IconHelper.RemoveIcon(this);
+        //}
 
-        }
+        //private void TxtUserEntry_TextChanged(object sender, TextChangedEventArgs e)
+        //{
 
-        private void OnPasswordChange(object sender, EventArgs e)
-        {
-            username.Text = password.SecurePassword.ToString();
-        }
+        //}
+
+        //private void OnPasswordChange(object sender, EventArgs e)
+        //{
+        //}
     }
 }

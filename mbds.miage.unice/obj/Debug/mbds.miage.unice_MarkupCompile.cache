@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Devs\mbds.miage.unice\mbds.miage.unice\App.xaml
-11909392773
+4-1915809115
 
-6-659561003
+91411936314
 131569487696
-src\login\MainWindow.xaml;
+pages\login\MainWindow.xaml;styles\Color.xaml;styles\Fonts.xaml;styles\WindowStyle.xaml;
 
 False
 

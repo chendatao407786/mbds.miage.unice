@@ -1,0 +1,61 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:mbds.miage.unice">
+    <Style TargetType="{x:Type local:MainWindow}" x:Name="WindowStyle">
+        <Style.Resources>
+            <SolidColorBrush x:Name="BorderBrush" Color="#ECECEC"/>
+        </Style.Resources>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="MinWidth" Value="250"/>
+        <Setter Property="MinHeight" Value="350"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:MainWindow}" x:Name="Login">
+                    <Grid x:Name="WindowFrame">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="4"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border Background="{DynamicResource BorderBrush}" x:Name="BorderLeft" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"/>
+                        <Border Background="{DynamicResource BorderBrush}" x:Name="BorderTopLeft" Grid.Column="0" Grid.Row="0"/>
+                        <Border Background="{DynamicResource BorderBrush}" x:Name="BorderTop" Grid.Column="1" Grid.Row="0"/>
+                        <Border Background="{DynamicResource BorderBrush}" x:Name="BorderTopRight" Grid.Column="2" Grid.Row="0" />
+                        <Border Background="{DynamicResource BorderBrush}" x:Name="BorderRight" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"/>
+                        <Border Background="{DynamicResource BorderBrush}" x:Name="BorderBottomRight" Grid.Column="2" Grid.Row="3"/>
+                        <Border Background="{DynamicResource BorderBrush}" x:Name="BorderButtom" Grid.Column="1" Grid.Row="3"/>
+                        <Border Background="{DynamicResource BorderBrush}" x:Name="BorderButtomLeft" Grid.Column="0" Grid.Row="3"/>
+                        <Border x:Name="WindowCaption" Grid.Column="1" Background="LightSlateGray">
+                            <DockPanel LastChildFill="True">
+                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Button x:Name="MinimizeButton" 
+                                            Content="_"
+                                            Margin="0,0,4,0"
+                                            Visibility="{TemplateBinding ResizeMode,Converter={StaticResource MinimizeVisibilityConverter}}"/>
+                                    <Button x:Name="MaximizeButton" 
+                                            Content="[ ]"
+                                            Margin="0,0,4,0"
+                                            Visibility="{TemplateBinding ResizeMode,Converter={StaticResource MaximizeVisibilityConverter}}"/>
+                                    <Button x:Name="CloseButton" 
+                                            Content="X"
+                                            Visibility="{TemplateBinding ResizeMode,Converter={StaticResource CloseVisibilityConverter}}"/>
+                                </StackPanel>
+                                <TextBlock x:Name="CaptionText" DockPanel.Dock="Left" Margin="6,0,0,0" Padding="0"/>
+                            </DockPanel>
+                        </Border>
+                    </Grid>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

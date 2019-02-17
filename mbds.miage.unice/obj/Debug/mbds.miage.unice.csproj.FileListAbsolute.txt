@@ -1,6 +1,4 @@
-C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.csprojAssemblyReference.cache
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\App.g.cs
-C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice_MarkupCompile.cache
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice_MarkupCompile.lref
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.exe
@@ -12,6 +10,11 @@ C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.g.resources
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.Properties.Resources.resources
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.csproj.GenerateResource.cache
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.csproj.CoreCompileInputs.cache
-C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\src\login\MainWindow.g.cs
-C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\src\login\MainWindow.baml
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\App.baml
+C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\pages\login\MainWindow.g.cs
+C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\pages\login\MainWindow.baml
+C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\styles\Fonts.baml
+C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\styles\Color.baml
+C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.csprojAssemblyReference.cache
+C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\styles\WindowStyle.baml
