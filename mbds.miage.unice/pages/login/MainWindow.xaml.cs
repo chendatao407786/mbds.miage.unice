@@ -1,4 +1,5 @@
 ﻿using mbds.miage.unice.src.util;
+using System.Windows.Shell;
 using mbds.miage.unice.ViewModels;
 using System;
 using System.Collections.Generic;

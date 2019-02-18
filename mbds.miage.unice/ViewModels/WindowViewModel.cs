@@ -19,7 +19,7 @@ namespace mbds.miage.unice.ViewModels
         public Thickness OuterMarginSizeThickness { get => new Thickness(ResizeBorder); }
         public int WindowRadius { get => mWindow.WindowState == WindowState.Maximized ? 0 : mWindowRadius; set => mWindowRadius = value; }
         public CornerRadius WindowCornerRadius { get => new CornerRadius(WindowRadius); }
-        public int TitleHeight { get; set; } = 20;
+        public int TittleHeight { get; set; } = 20;
         public WindowViewModel(Window window)
         {
             mWindow = window;
