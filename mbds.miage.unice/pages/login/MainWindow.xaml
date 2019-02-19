@@ -11,7 +11,8 @@
         WindowStartupLocation="CenterScreen"
         x:Name="Login"
         Title="Login"
-        Height="350" Width="250"
+        Height="350" 
+        Width="250"
         ResizeMode="NoResize"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -45,8 +46,8 @@
                                 <!--Main content-->
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="{Binding TittleHeight}"></RowDefinition>
-                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="{Binding TittleHeight,FallbackValue=20}"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <StackPanel 
                                         Grid.Row="0"
@@ -54,23 +55,40 @@
                                         HorizontalAlignment="Right" 
                                         VerticalAlignment="Top" 
                                         Height="{Binding TittleHeight}">
-                                        <Button Margin="0 0 5 0" Padding="0" BorderThickness="0" Width="15" Height="15" Background="Transparent">
-                                            <Border CornerRadius="7.5">
-                                                <Image Height="15" Width="15" Source="../../images/minimize.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                                        <Button Command="{Binding MinimizeCommand}"  WindowChrome.IsHitTestVisibleInChrome="True" Margin="0 0 5 0" Padding="0" BorderThickness="0" Width="12" Height="12" Background="Transparent">
+                                            <Border CornerRadius="5">
+                                                <Image  Source="../../images/minimize.png" RenderOptions.BitmapScalingMode="HighQuality"/>
                                             </Border>
                                         </Button>
-                                        <Button Margin="0 0 5 0" Padding="0" BorderThickness="0" Width="15" Height="15" Background="Transparent">
-                                            <Image Height="15" Width="15" Source="../../images/close.png"/>
+                                        <Button Command="{Binding CloseCommand}" WindowChrome.IsHitTestVisibleInChrome="True" Margin="0 0 5 0" Padding="0" BorderThickness="0" Width="12" Height="12" Background="Transparent">
+                                            <Image Source="../../images/close.png" RenderOptions.BitmapScalingMode="HighQuality"/>
                                         </Button>
                                     </StackPanel>
                                     <StackPanel Grid.Row="1" Orientation="Vertical" Panel.ZIndex="100">
-                                        <TextBox Width="150" 
-                                            WindowChrome.IsHitTestVisibleInChrome="True"
-                                            materialDesign:HintAssist.Hint="Username"
-                                            FontFamily="{StaticResource Roboto-light}" 
+                                        <TextBox Width="150"
+                                                Margin="0 90 0 0"
+                                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                                materialDesign:HintAssist.Hint="Please enter Username"
+                                                FontFamily="{StaticResource Roboto-light}" 
                                          />
+                                        <PasswordBox Width="150"
+                                                Margin="0 10 0 0"
+                                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                                materialDesign:HintAssist.Hint="Password"
+                                                FontFamily="{StaticResource Roboto-light}" 
+                                                FontSize="12"
+                                                x:Name="text1"
+                                         />
+                                        <Button Content="Test" Width="30" Height="10" Margin="0 50 0 0" Click="Button_Click" WindowChrome.IsHitTestVisibleInChrome="True"/>
+                                        
                                     </StackPanel>
+                                    <Popup x:Name="MyPopup" StaysOpen="False" Width="240" Height="200">
+                                        <Popup.Child>
+                                            <StackPanel Background="Bisque"></StackPanel>
+                                        </Popup.Child>
+                                    </Popup>
                                 </Grid>
+                                <!--Do expander here-->
                             </Grid>
                         </Border>
                     </ControlTemplate>
@@ -78,47 +96,9 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <!--<WindowChrome.WindowChrome>
-        <WindowChrome
-            GlassFrameThickness="-1"
-            CaptionHeight="{Binding Path=ActualHeight,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window} }"
-            ResizeBorderThickness="{Binding ResizeBorderThickness}"
-            CornerRadius="0"
-            />
-    </WindowChrome.WindowChrome>-->
-    <!--<Grid VerticalAlignment="Top" Background="LightGray">
-        <Grid>
-            <StackPanel Height="{Binding TitleHeight}" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Width="{Binding TitleHeight}" BorderThickness="0"/>
-                <Button Width="{Binding TitleHeight}" BorderThickness="0"/>
-                <Button Width="{Binding TitleHeight}" BorderThickness="0"/>
-            </StackPanel>
-        </Grid>
-        
-    </Grid>-->
-    <!--<Window.Resources>
-
-        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
-        <SolidColorBrush x:Key="brushWatermarkForeground" Color="LightSteelBlue" />
-        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
-
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-        <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
-        <Style x:Key="EntryFieldStyle" TargetType="Grid" >
-            <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Margin" Value="20,0" />
-        </Style>
-    </Window.Resources>-->
     <!--<StackPanel>
         <TextBlock Text="Username" FontFamily="{StaticResource Roboto-light}"></TextBlock>
         <TextBlock Text="Username" FontFamily="{StaticResource Roboto-Thin}"></TextBlock>
         <TextBlock Text="Username" FontFamily="{StaticResource Roboto-Bold}"></TextBlock>
-    </StackPanel>-->
-    <!--<StackPanel Width="150" Margin="0 90 0 0">
-        <TextBox x:Name="username" Style="{StaticResource TextBoxPlaceHolder}" Tag="Please enter username" Height="35" />
-        <Separator Background="LightGray" Margin="0"/>
-        <PasswordBox x:Name="password" Style="{StaticResource PasswordPlaceHolder}" Tag="Password" Height="35" PasswordChanged="OnPasswordChange"/>
-        <Separator Background="LightGray" Margin="0"/>
     </StackPanel>-->
 </Window>

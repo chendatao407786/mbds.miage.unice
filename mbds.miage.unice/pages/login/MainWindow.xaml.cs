@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Controls.Primitives;
 
 namespace mbds.miage.unice
 {
@@ -25,8 +26,21 @@ namespace mbds.miage.unice
     {
         public MainWindow()
         {
-            InitializeComponent();
             this.DataContext = new WindowViewModel(this);
+            InitializeComponent();
+            
+        }
+
+        public Popup MyPopup { get; private set; }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //MyPopup.IsOpen = false;
+            //MyPopup.PlacementTarget = sender as UIElement;
+            //MyPopup.Placement = PlacementMode.Right;
+            //MyPopup.AllowsTransparency = true;
+            //MyPopup.PopupAnimation = PopupAnimation.Fade;
+            //MyPopup.IsOpen = true;
         }
 
         //protected override void OnSourceInitialized(EventArgs e)

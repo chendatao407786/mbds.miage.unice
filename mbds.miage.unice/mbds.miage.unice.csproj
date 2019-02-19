@@ -69,6 +69,7 @@
     <Compile Include="pages\login\TextInputToVisibilityConverter .cs" />
     <Compile Include="util\IconHelper.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Base\RelayCommand.cs" />
     <Compile Include="ViewModels\WindowViewModel.cs" />
     <Page Include="pages\login\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
