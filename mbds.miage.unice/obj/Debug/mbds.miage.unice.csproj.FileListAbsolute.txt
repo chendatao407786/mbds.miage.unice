@@ -1,7 +1,6 @@
 Z:\Develope\mbds.miage.unice\mbds.miage.unice\bin\Debug\mbds.miage.unice.exe.config
 Z:\Develope\mbds.miage.unice\mbds.miage.unice\bin\Debug\mbds.miage.unice.exe
 Z:\Develope\mbds.miage.unice\mbds.miage.unice\bin\Debug\mbds.miage.unice.pdb
-Z:\Develope\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.csprojAssemblyReference.cache
 Z:\Develope\mbds.miage.unice\mbds.miage.unice\obj\Debug\pages\login\MainWindow.g.cs
 Z:\Develope\mbds.miage.unice\mbds.miage.unice\obj\Debug\App.g.cs
 Z:\Develope\mbds.miage.unice\mbds.miage.unice\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -53,3 +52,4 @@ C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.csproj.Core
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.csproj.CopyComplete
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.exe
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.pdb
+Z:\Develope\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.csprojAssemblyReference.cache

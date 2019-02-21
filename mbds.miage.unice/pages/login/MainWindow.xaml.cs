@@ -24,24 +24,54 @@ namespace mbds.miage.unice
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool _isOpened = false;
         public MainWindow()
         {
             this.DataContext = new WindowViewModel(this);
             InitializeComponent();
-            
         }
 
-        public Popup MyPopup { get; private set; }
+        public bool IsOpened { get => _isOpened; set => _isOpened = value; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //MyPopup.IsOpen = false;
-            //MyPopup.PlacementTarget = sender as UIElement;
-            //MyPopup.Placement = PlacementMode.Right;
-            //MyPopup.AllowsTransparency = true;
-            //MyPopup.PopupAnimation = PopupAnimation.Fade;
-            //MyPopup.IsOpen = true;
+            Popup MyPopup = Login.Template.FindName("MyPopup", Login) as Popup;
+            if (MyPopup.IsOpen == false)
+            {
+                MyPopup.Placement = PlacementMode.Bottom;
+                MyPopup.AllowsTransparency = true;
+                MyPopup.PopupAnimation = PopupAnimation.Fade;
+                //MyPopup.IsOpen = true;
+                IsOpened = true;
+            }
+            else
+            {
+                Console.WriteLine("Close");
+                //MyPopup.IsOpen = false;
+                IsOpened = false;
+            }
+
+
         }
+
+        //public Popup MyPopup { get; private set; }
+
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if(MyPopup.IsOpen == false)
+        //    {
+        //        MyPopup.PlacementTarget = sender as UIElement;
+        //        MyPopup.Placement = PlacementMode.Right;
+        //        MyPopup.AllowsTransparency = true;
+        //        MyPopup.PopupAnimation = PopupAnimation.Fade;
+        //        MyPopup.IsOpen = true;
+        //    }else if(MyPopup.IsOpen == true)
+        //    {
+        //        MyPopup.IsOpen = false;
+        //    }
+
+
+        //}
 
         //protected override void OnSourceInitialized(EventArgs e)
         //{

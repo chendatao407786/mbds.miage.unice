@@ -25,25 +25,9 @@ namespace mbds.miage.unice.ViewModels
         public ICommand MinimizeCommand { get; set; }
         public ICommand CloseCommand { get; set; }
         public ICommand DropDown { get; set; }
-        public Popup MyPopup { get; set; }
+        //public Popup MyPopup { get; set; }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MyPopup.PlacementTarget = sender as UIElement;
-            MyPopup.Placement = PlacementMode.Bottom;
-            MyPopup.AllowsTransparency = true;
-            MyPopup.PopupAnimation = PopupAnimation.Fade;
-            if (MyPopup.IsOpen == false)
-            {
-                MyPopup.IsOpen = true;
-            }
-            else
-            {
-                MyPopup.IsOpen = false;
-            }
-            
-           
-        }
+
         public WindowViewModel(Window window)
         {
             mWindow = window;
@@ -55,10 +39,7 @@ namespace mbds.miage.unice.ViewModels
                 OnPropertyChanged(nameof(WindowRadius));
                 OnPropertyChanged(nameof(WindowCornerRadius));
             };
-            //DropDown = new RelayCommand(() =>
-            //{
-                
-            //});
+            //DropDown = new RelayCommand(Button_Click);
             MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
             CloseCommand = new RelayCommand(() => mWindow.Close());
         }
