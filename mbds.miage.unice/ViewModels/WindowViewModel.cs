@@ -1,12 +1,14 @@
-﻿using mbds.miage.unice.ViewModels.Base;
+﻿using mbds.miage.unice.model;
+using mbds.miage.unice.ViewModels.Base;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Net;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace mbds.miage.unice.ViewModels
 {
@@ -15,6 +17,9 @@ namespace mbds.miage.unice.ViewModels
         private Window mWindow;
         private int mOuterMarginSize = 5;
         private int mWindowRadius = 3;
+        private bool isPopupOpen = false;
+        private string url = "http://192.168.0.11:8080/api/auth";
+        private string _response = "";
         public int ResizeBorder { get; set; } = 6;
         public Thickness ResizeBorderThickness { get => new Thickness(ResizeBorder + OuterMarginSize); }
         public int OuterMarginSize { get => mWindow.WindowState == WindowState.Maximized ? 0 : mOuterMarginSize; set => mOuterMarginSize = value; }
@@ -25,8 +30,13 @@ namespace mbds.miage.unice.ViewModels
         public ICommand MinimizeCommand { get; set; }
         public ICommand CloseCommand { get; set; }
         public ICommand DropDown { get; set; }
-        //public Popup MyPopup { get; set; }
+        public ICommand Connect { get; set; }
+        //public string Test { get => _test; set {
+        //        _test = value;
+        //        OnPropertyChanged(nameof(Test));
+        //    } }
 
+        public string Response { get => _response; set { _response = value; OnPropertyChanged(nameof(Response)); }}
 
         public WindowViewModel(Window window)
         {
@@ -38,10 +48,75 @@ namespace mbds.miage.unice.ViewModels
                 OnPropertyChanged(nameof(OuterMarginSizeThickness));
                 OnPropertyChanged(nameof(WindowRadius));
                 OnPropertyChanged(nameof(WindowCornerRadius));
+               
             };
-            //DropDown = new RelayCommand(Button_Click);
+
+            DropDown = new RelayCommand(() =>
+            {
+                Popup MyPopup = mWindow.Template.FindName("MyPopup", mWindow) as Popup;
+                Window zone = mWindow;
+                MyPopup.PlacementTarget = zone;
+                MyPopup.Placement = PlacementMode.Relative;
+                MyPopup.VerticalOffset = 350 - 10 - 5;
+                MyPopup.AllowsTransparency = true;
+                MyPopup.PopupAnimation = PopupAnimation.Slide;
+                if (isPopupOpen == false)
+                {
+                  
+                    MyPopup.IsOpen = true;
+                    isPopupOpen = true;
+                }
+                else
+                {
+                    isPopupOpen = false;
+                    MyPopup.IsOpen = false;
+                }
+            });
             MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
             CloseCommand = new RelayCommand(() => mWindow.Close());
+            Connect = new RelayCommand(() =>
+            {
+                TextBox username = mWindow.Template.FindName("username", mWindow) as TextBox;
+                PasswordBox passwordBox = mWindow.Template.FindName("password", mWindow) as PasswordBox;
+                Connection connection = new Connection(username.Text, passwordBox.Password);
+                string json = JsonConvert.SerializeObject(connection);
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                request.KeepAlive = false;
+                request.Method = "POST";
+                request.ContentType = "application/json";
+                request.Accept = "application/json";
+                Stream requestStream = request.GetRequestStream();
+                StreamWriter streamWriter = new StreamWriter(requestStream);
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                requestStream.Close();
+                TextBlock message = mWindow.Template.FindName("message", mWindow) as TextBlock;
+                try
+                {
+                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                    message.Foreground = new SolidColorBrush(Colors.Green);
+                    Response = "Connection successfully";
+                }
+                catch(WebException e)
+                {
+                    HttpWebResponse response = (HttpWebResponse)e.Response;
+                    message.Foreground = new SolidColorBrush(Colors.Red);
+                    switch (response.StatusCode)
+                    {
+                        case HttpStatusCode.Unauthorized:
+                            Response = "Unauthorized";
+                            break;
+                        default:
+                            Response = "Error";
+                            break;
+                    }
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            });
         }
     }
 }

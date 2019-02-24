@@ -53,3 +53,8 @@ C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.csproj.Copy
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.exe
 C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.pdb
 Z:\Develope\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.csprojAssemblyReference.cache
+C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\mbds.miage.unice.csprojAssemblyReference.cache
+C:\Devs\mbds.miage.unice\mbds.miage.unice\bin\Debug\Newtonsoft.Json.dll
+C:\Devs\mbds.miage.unice\mbds.miage.unice\bin\Debug\System.Net.Http.Formatting.dll
+C:\Devs\mbds.miage.unice\mbds.miage.unice\bin\Debug\Newtonsoft.Json.xml
+C:\Devs\mbds.miage.unice\mbds.miage.unice\bin\Debug\System.Net.Http.Formatting.xml

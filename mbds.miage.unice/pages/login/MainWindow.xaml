@@ -20,7 +20,8 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+        materialDesign:ThemeAssist.Theme="Light"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
     <Window.Resources>
         <Style TargetType="{x:Type local:MainWindow}">
             <Setter Property="WindowChrome.WindowChrome">
@@ -29,18 +30,18 @@
                         GlassFrameThickness="-1"
                         CaptionHeight="{Binding Path=ActualHeight,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window} }"
                         ResizeBorderThickness="{Binding ResizeBorderThickness}"
-                        CornerRadius="0"/>      
+                        CornerRadius="0"/>
                 </Setter.Value>
             </Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
                         <!--Border Outside-->
-                        <Border Padding="{Binding OuterMarginSizeThickness,FallbackValue=5}">
+                        <Border Padding="{Binding OuterMarginSizeThickness,FallbackValue=6}" x:Name="Drop">
                             <Grid>
-                                <Border CornerRadius="{Binding WindowCornerRadius}" Background="White">
+                                <Border CornerRadius="{Binding WindowCornerRadius,FallbackValue=3}" Background="White">
                                     <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="1" Opacity="0.3"/>
+                                        <DropShadowEffect ShadowDepth="1" Opacity="0.3" />
                                     </Border.Effect>
                                 </Border>
                                 <!--Main content-->
@@ -48,13 +49,14 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="{Binding TittleHeight,FallbackValue=20}"></RowDefinition>
                                         <RowDefinition></RowDefinition>
+                                        <RowDefinition Height="5"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <StackPanel 
                                         Grid.Row="0"
                                         Orientation="Horizontal" 
                                         HorizontalAlignment="Right" 
                                         VerticalAlignment="Top" 
-                                        Height="{Binding TittleHeight}">
+                                        Height="{Binding TittleHeight,FallbackValue=20}">
                                         <Button Command="{Binding MinimizeCommand}"  WindowChrome.IsHitTestVisibleInChrome="True" Margin="0 0 5 0" Padding="0" BorderThickness="0" Width="12" Height="12" Background="Transparent">
                                             <Border CornerRadius="5">
                                                 <Image  Source="../../images/minimize.png" RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -64,34 +66,94 @@
                                             <Image Source="../../images/close.png" RenderOptions.BitmapScalingMode="HighQuality"/>
                                         </Button>
                                     </StackPanel>
-                                    <StackPanel Grid.Row="1" Orientation="Vertical" Panel.ZIndex="100">
-                                        <TextBox Width="150"
-                                                Margin="0 90 0 0"
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition Height="20"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Border Height="90">
+                                            <Image Source="../../images/wechat.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        </Border>
+                                        <Grid Grid.Row="1"  Panel.ZIndex="100" Width="150">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Border Grid.Row="0" BorderThickness="0 0 0 1" BorderBrush="Gray"></Border>
+                                            <Border Grid.Row="1" BorderThickness="0 0 0 1" BorderBrush="Gray"></Border>
+                                            <TextBox
+                                                Height="30"
+                                                x:Name="username"
+                                                Width="150"
                                                 WindowChrome.IsHitTestVisibleInChrome="True"
                                                 materialDesign:HintAssist.Hint="Please enter Username"
+                                                materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                                 FontFamily="{StaticResource Roboto-light}" 
+                                                BorderThickness="0"
+                                                VerticalContentAlignment="Center"
                                          />
-                                        <PasswordBox Width="150"
-                                                Margin="0 10 0 0"
+                                            <StackPanel Orientation="Horizontal" Width="150" Height="30" Grid.Row="1">
+                                                <PasswordBox
+                                                    VerticalContentAlignment="Center"
+                                                    BorderThickness="0"
+                                                    x:Name="password"
+                                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                                    materialDesign:HintAssist.Hint="Password"
+                                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                                    FontFamily="{StaticResource Roboto-light}" 
+                                                    FontSize="12"
+                                                    Width="130"
+                                                    Height="30">
+                                                    
+                                                </PasswordBox>
+                                                <Button
+                                                Style="{DynamicResource MaterialDesignFloatingActionButton}"
+                                                Width="20"
+                                                Height="20"
+                                                RenderOptions.BitmapScalingMode="HighQuality"
                                                 WindowChrome.IsHitTestVisibleInChrome="True"
-                                                materialDesign:HintAssist.Hint="Password"
-                                                FontFamily="{StaticResource Roboto-light}" 
-                                                FontSize="12"
-                                                x:Name="text1"
-                                         />
-                                        <Popup x:Name="MyPopup" StaysOpen="False" Width="240" Height="200" IsOpen="{Binding IsOpened}">
-                                            <Popup.Child>
-                                                <StackPanel Background="Bisque">
-                                                    <TextBlock Text="Popup"></TextBlock>
-                                                </StackPanel>
-                                            </Popup.Child>
-                                        </Popup>
-                                        <Button Content="Test" Width="30" Height="10" Margin="0 50 0 0" Click="Button_Click" WindowChrome.IsHitTestVisibleInChrome="True"/>
-                                        
-                                    </StackPanel>
-                                    
+                                                Command="{Binding Connect}"
+                                                    RenderOptions.EdgeMode="Unspecified">
+                                                    <materialDesign:PackIcon Kind="ArrowRight" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                                </Button>
+                                            </StackPanel>
+                                            <TextBlock x:Name="message" Grid.Row="2" Text="{Binding Response}"/>
+                                        </Grid>
+                                        <Button Grid.Row="2"  Width="25" Height="25" Command="{Binding DropDown}" WindowChrome.IsHitTestVisibleInChrome="True" Style="{DynamicResource MaterialDesignToolButton}">
+                                            <materialDesign:PackIcon Kind="ChevronDown" Width="25" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Button>
+                                    </Grid>
+
+                                    <StackPanel Grid.Row="2" x:Name="ZonePopup"/>
                                 </Grid>
-                                <!--Do expander here-->
+
+                                <Popup  PopupAnimation="Slide" x:Name="MyPopup" StaysOpen="False" AllowsTransparency="True" Width="250" Height="200" HorizontalAlignment="Center">
+                                    <Popup.Child>
+                                        <Border Padding="{Binding OuterMarginSizeThickness,FallbackValue=6}">
+                                            <Grid>
+                                                <Border CornerRadius="{Binding WindowCornerRadius,FallbackValue=3}" Background="White">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="1" Opacity="0.3" />
+                                                    </Border.Effect>
+                                                </Border>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Text="Popup" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                                </Grid>
+
+                                            </Grid>
+                                        </Border>
+                                    </Popup.Child>
+                                </Popup>
                             </Grid>
                         </Border>
                     </ControlTemplate>
