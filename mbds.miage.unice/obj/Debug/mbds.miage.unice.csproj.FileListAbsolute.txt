@@ -58,3 +58,5 @@ C:\Devs\mbds.miage.unice\mbds.miage.unice\bin\Debug\Newtonsoft.Json.dll
 C:\Devs\mbds.miage.unice\mbds.miage.unice\bin\Debug\System.Net.Http.Formatting.dll
 C:\Devs\mbds.miage.unice\mbds.miage.unice\bin\Debug\Newtonsoft.Json.xml
 C:\Devs\mbds.miage.unice\mbds.miage.unice\bin\Debug\System.Net.Http.Formatting.xml
+C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\pages\chat\ChatWindow.g.cs
+C:\Devs\mbds.miage.unice\mbds.miage.unice\obj\Debug\pages\chat\ChatWindow.baml

@@ -1,4 +1,5 @@
 ﻿using mbds.miage.unice.model;
+using mbds.miage.unice.pages.chat;
 using mbds.miage.unice.ViewModels.Base;
 using Newtonsoft.Json;
 using System;
@@ -31,10 +32,6 @@ namespace mbds.miage.unice.ViewModels
         public ICommand CloseCommand { get; set; }
         public ICommand DropDown { get; set; }
         public ICommand Connect { get; set; }
-        //public string Test { get => _test; set {
-        //        _test = value;
-        //        OnPropertyChanged(nameof(Test));
-        //    } }
 
         public string Response { get => _response; set { _response = value; OnPropertyChanged(nameof(Response)); }}
 
@@ -62,7 +59,6 @@ namespace mbds.miage.unice.ViewModels
                 MyPopup.PopupAnimation = PopupAnimation.Slide;
                 if (isPopupOpen == false)
                 {
-                  
                     MyPopup.IsOpen = true;
                     isPopupOpen = true;
                 }
@@ -97,6 +93,9 @@ namespace mbds.miage.unice.ViewModels
                     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                     message.Foreground = new SolidColorBrush(Colors.Green);
                     Response = "Connection successfully";
+                    ChatWindow chatWindow = new ChatWindow();
+                    chatWindow.Show();
+                    mWindow.Close();
                 }
                 catch(WebException e)
                 {
