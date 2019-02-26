@@ -7,7 +7,29 @@
         xmlns:local="clr-namespace:mbds.miage.unice.pages.chat"
         mc:Ignorable="d"
         materialDesign:ThemeAssist.Theme="Light"
-        Height="450" Width="800">
+        Icon="../../images/wechat.png"
+        WindowStyle="SingleBorderWindow"
+        Height="500" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Key="User-List">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Rectangle Height="40" Width="40" RadiusX="3" RadiusY="3">
+                    <Rectangle.Fill>
+                        <ImageBrush x:Name="profile_image" ImageSource="{Binding Path=SrcImage,Mode=OneWay}"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock Grid.Column="1" Text="{Binding Path=Name,Mode=OneWay}" Padding="15 0 0 0"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="200" MaxWidth="200"></ColumnDefinition>
@@ -15,9 +37,50 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="50" MaxHeight="50"></RowDefinition>
-            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="11*"></RowDefinition>
             <RowDefinition MinHeight="120" MaxHeight="120"></RowDefinition>
             <RowDefinition MinHeight="50" MaxHeight="50"></RowDefinition>
         </Grid.RowDefinitions>
+        <ScrollViewer
+            Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ColumnDefinition}}"
+            Grid.Row="1"
+            Grid.RowSpan="3"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled">
+            <ListBox
+                Name="ChatList"
+                BorderThickness="0"
+                Background="#E7E6E4"
+                Width="{Binding Path=ActuaWidth,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ColumnDefinition}}"
+                ItemTemplate="{StaticResource User-List}"
+                ItemsSource="{Binding UserList,Mode=OneWay}"
+                />
+        </ScrollViewer>
+        <TextBox Padding="10 3 10 3" Name="Sent" BorderThickness="0" TextWrapping="Wrap" Grid.Column="1" Grid.Row="2" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+        <Button
+            Background="#F6F6F2"
+            BorderBrush="#f6f6f2"
+            materialDesign:TextFieldAssist.DecorationVisibility="Visible"
+            MinWidth="70"
+            MaxWidth="70"
+            MinHeight="30"
+            MaxHeight="30"
+            Grid.Column="1"
+            Grid.Row="3"
+            VerticalContentAlignment="Center"
+            HorizontalAlignment="Right"
+            Margin="35 0"
+            Content="Sent"/>
+        <Border
+            BorderBrush="LightGray"
+            BorderThickness="0"
+            Background="#E7E6E4">
+            <Button Height="25" Width="25" HorizontalAlignment="Right" Margin="0 0 10 0" Content="+" Background="#E7E6E4"/>
+        </Border>
+        <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="1,0,0,0" Background="#F6F6F2"/>
+        <Border Grid.Row="1" Grid.Column="1" BorderThickness="1" BorderBrush="LightGray" Background="#F6F6F2"/>
+        <Border Grid.Row="1" Grid.RowSpan="2" BorderThickness="0,0,0,0" BorderBrush="LightGray"/>
+        <Border Grid.Row="2" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="LightGray"/>
+        <Border Grid.Row="3" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="LightGray"/>
     </Grid>
 </Window>
