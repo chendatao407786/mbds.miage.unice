@@ -38,7 +38,7 @@
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="50" MaxHeight="50"></RowDefinition>
             <RowDefinition Height="11*"></RowDefinition>
-            <RowDefinition MinHeight="120" MaxHeight="120"></RowDefinition>
+            <RowDefinition MinHeight="120" MaxHeight="120" Height="120"></RowDefinition>
             <RowDefinition MinHeight="50" MaxHeight="50"></RowDefinition>
         </Grid.RowDefinitions>
         <ScrollViewer
@@ -51,16 +51,23 @@
                 Name="ChatList"
                 BorderThickness="0"
                 Background="#E7E6E4"
-                Width="{Binding Path=ActuaWidth,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ColumnDefinition}}"
+                Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ColumnDefinition}}"
                 ItemTemplate="{StaticResource User-List}"
                 ItemsSource="{Binding UserList,Mode=OneWay}"
                 />
         </ScrollViewer>
-        <TextBox Padding="10 3 10 3" Name="Sent" BorderThickness="0" TextWrapping="Wrap" Grid.Column="1" Grid.Row="2" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+        <TextBox 
+            Padding="10 3 10 3" 
+            x:Name="Sent" 
+            BorderThickness="0" 
+            TextWrapping="Wrap" 
+            Grid.Column="1" 
+            Grid.Row="2" 
+            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+            VerticalContentAlignment="Top"></TextBox>
         <Button
             Background="#F6F6F2"
             BorderBrush="#f6f6f2"
-            materialDesign:TextFieldAssist.DecorationVisibility="Visible"
             MinWidth="70"
             MaxWidth="70"
             MinHeight="30"
@@ -70,16 +77,20 @@
             VerticalContentAlignment="Center"
             HorizontalAlignment="Right"
             Margin="35 0"
-            Content="Sent"/>
+            Content="Sent"
+            Style="{DynamicResource MaterialDesignRaisedLightButton}"/>
+        <Button Width="20" Height="20" HorizontalAlignment="Right" Margin="0 0 10 0" Padding="0"  Background="LightGray" BorderThickness="0" Style="{DynamicResource MaterialDesignRaisedLightButton}" Panel.ZIndex="100">
+            <materialDesign:PackIcon Kind="Plus" RenderOptions.BitmapScalingMode="HighQuality" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Button>
+
         <Border
             BorderBrush="LightGray"
             BorderThickness="0"
-            Background="#E7E6E4">
-            <Button Height="25" Width="25" HorizontalAlignment="Right" Margin="0 0 10 0" Content="+" Background="#E7E6E4"/>
-        </Border>
+            Background="#E7E6E4"/>
+
         <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="1,0,0,0" Background="#F6F6F2"/>
         <Border Grid.Row="1" Grid.Column="1" BorderThickness="1" BorderBrush="LightGray" Background="#F6F6F2"/>
-        <Border Grid.Row="1" Grid.RowSpan="2" BorderThickness="0,0,0,0" BorderBrush="LightGray"/>
+        <Border Grid.Row="1" Grid.RowSpan="3" BorderThickness="0,0,0,0" BorderBrush="LightGray"/>
         <Border Grid.Row="2" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="LightGray"/>
         <Border Grid.Row="3" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="LightGray"/>
     </Grid>

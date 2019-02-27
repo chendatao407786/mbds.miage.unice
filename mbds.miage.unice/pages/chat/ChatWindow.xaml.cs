@@ -1,4 +1,4 @@
-﻿//using mbds.miage.unice.model;
+﻿using mbds.miage.unice.model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace mbds.miage.unice.pages.chat
 {
-    /// <summary>
-    /// ChatWindow.xaml 的交互逻辑
-    /// </summary>
     public partial class ChatWindow : Window
     {
         ObservableCollection<User> userList = new ObservableCollection<User>();
@@ -30,6 +27,7 @@ namespace mbds.miage.unice.pages.chat
             User user1 = new User("Datao", "chendatao1126", "http://192.168.0.10:8888/tpgrails/images/chen.jpg");
             userList.Add(user1);
             InitializeComponent();
+            Loaded += (s, e) => Keyboard.Focus(Sent);
         }
 
     }

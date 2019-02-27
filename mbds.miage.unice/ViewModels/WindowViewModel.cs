@@ -1,5 +1,6 @@
 ﻿using mbds.miage.unice.model;
 using mbds.miage.unice.pages.chat;
+using mbds.miage.unice.pages.test;
 using mbds.miage.unice.ViewModels.Base;
 using Newtonsoft.Json;
 using System;
@@ -19,7 +20,8 @@ namespace mbds.miage.unice.ViewModels
         private int mOuterMarginSize = 5;
         private int mWindowRadius = 3;
         private bool isPopupOpen = false;
-        private string url = "http://192.168.0.11:8080/api/auth";
+        //private string url = "http://192.168.0.11:8080/api/auth";
+        private string url = "http://192.168.0.10:8080/api/auth";
         private string _response = "";
         public int ResizeBorder { get; set; } = 6;
         public Thickness ResizeBorderThickness { get => new Thickness(ResizeBorder + OuterMarginSize); }
@@ -82,25 +84,34 @@ namespace mbds.miage.unice.ViewModels
                 request.Method = "POST";
                 request.ContentType = "application/json";
                 request.Accept = "application/json";
-                Stream requestStream = request.GetRequestStream();
-                StreamWriter streamWriter = new StreamWriter(requestStream);
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                requestStream.Close();
+                
                 TextBlock message = mWindow.Template.FindName("message", mWindow) as TextBlock;
                 try
                 {
+                    Stream requestStream = request.GetRequestStream();
+                    StreamWriter streamWriter = new StreamWriter(requestStream);
+                    streamWriter.Write(json);
+                    streamWriter.Flush();
+                    requestStream.Close();
                     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                     message.Foreground = new SolidColorBrush(Colors.Green);
                     Response = "Connection successfully";
                     ChatWindow chatWindow = new ChatWindow();
                     chatWindow.Show();
+                    //Test test = new Test();
+                    //test.Show();
                     mWindow.Close();
                 }
                 catch(WebException e)
                 {
-                    HttpWebResponse response = (HttpWebResponse)e.Response;
                     message.Foreground = new SolidColorBrush(Colors.Red);
+                    HttpWebResponse response = (HttpWebResponse)e.Response;
+                    if (response == null)
+                    {
+                        Response = "Server is not online";
+                        return;
+                    }
+                    Console.WriteLine(response.StatusCode);
                     switch (response.StatusCode)
                     {
                         case HttpStatusCode.Unauthorized:

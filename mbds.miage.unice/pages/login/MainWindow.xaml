@@ -106,18 +106,20 @@
                                                     FontSize="12"
                                                     Width="130"
                                                     Height="30">
-                                                    
+
                                                 </PasswordBox>
                                                 <Button
-                                                Style="{DynamicResource MaterialDesignFloatingActionButton}"
-                                                Width="20"
-                                                Height="20"
-                                                RenderOptions.BitmapScalingMode="HighQuality"
-                                                WindowChrome.IsHitTestVisibleInChrome="True"
-                                                Command="{Binding Connect}"
-                                                    RenderOptions.EdgeMode="Unspecified">
-                                                    <materialDesign:PackIcon Kind="ArrowRight" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                                                    Width="16"
+                                                    Height="16"
+                                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                                    Command="{Binding Connect}"
+                                                    Background="LightGray"
+                                                    BorderThickness="0"
+                                                    Padding="0">
+                                                    <materialDesign:PackIcon Kind="ArrowRight" Width="16" Height="16"/>
                                                 </Button>
+
                                             </StackPanel>
                                             <TextBlock x:Name="message" Grid.Row="2" Text="{Binding Response}"/>
                                         </Grid>
