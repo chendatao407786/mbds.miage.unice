@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mbds.miage.unice.model
 {
-    class User
+    public class User
     {
         private string _name;
         private string _id;

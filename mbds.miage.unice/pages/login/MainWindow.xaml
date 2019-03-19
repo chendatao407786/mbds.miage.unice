@@ -12,7 +12,7 @@
         x:Name="Login"
         Title="Login"
         Height="350" 
-        Width="250"
+        Width="280"
         ResizeMode="NoResize"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -80,6 +80,8 @@
                                                 <RowDefinition Height="30"></RowDefinition>
                                                 <RowDefinition Height="30"></RowDefinition>
                                                 <RowDefinition Height="30"></RowDefinition>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                                <RowDefinition Height="30"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Border Grid.Row="0" BorderThickness="0 0 0 1" BorderBrush="Gray"></Border>
                                             <Border Grid.Row="1" BorderThickness="0 0 0 1" BorderBrush="Gray"></Border>
@@ -106,7 +108,6 @@
                                                     FontSize="12"
                                                     Width="130"
                                                     Height="30">
-
                                                 </PasswordBox>
                                                 <Button
                                                     Style="{DynamicResource MaterialDesignRaisedButton}"
@@ -119,39 +120,49 @@
                                                     Padding="0">
                                                     <materialDesign:PackIcon Kind="ArrowRight" Width="16" Height="16"/>
                                                 </Button>
-
                                             </StackPanel>
-                                            <TextBlock x:Name="message" Grid.Row="2" Text="{Binding Response}"/>
+                                            <CheckBox Grid.Row="2" FontFamily="{StaticResource Roboto-light}" Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Center" WindowChrome.IsHitTestVisibleInChrome="True">Remember me</CheckBox>
+                                            <CheckBox Grid.Row="3" FontFamily="{StaticResource Roboto-light}" Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Center" WindowChrome.IsHitTestVisibleInChrome="True">Garder session</CheckBox>
+
+                                            <TextBlock x:Name="message" Grid.Row="4" Text="{Binding Response}"/>
                                         </Grid>
                                         <Button Grid.Row="2"  Width="25" Height="25" Command="{Binding DropDown}" WindowChrome.IsHitTestVisibleInChrome="True" Style="{DynamicResource MaterialDesignToolButton}">
                                             <materialDesign:PackIcon Kind="ChevronDown" Width="25" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Button>
                                     </Grid>
-
                                     <StackPanel Grid.Row="2" x:Name="ZonePopup"/>
                                 </Grid>
-
-                                <Popup  PopupAnimation="Slide" x:Name="MyPopup" StaysOpen="False" AllowsTransparency="True" Width="250" Height="200" HorizontalAlignment="Center">
+                                <Popup  PopupAnimation="Slide" x:Name="MyPopup" StaysOpen="False" AllowsTransparency="True" Width="280" Height="150" HorizontalAlignment="Center">
                                     <Popup.Child>
                                         <Border Padding="{Binding OuterMarginSizeThickness,FallbackValue=6}">
                                             <Grid>
-                                                <Border CornerRadius="{Binding WindowCornerRadius,FallbackValue=3}" Background="White">
+                                                <Border CornerRadius="{Binding WindowCornerRadius,FallbackValue=3}" Background="White" >
                                                     <Border.Effect>
                                                         <DropShadowEffect ShadowDepth="1" Opacity="0.3" />
                                                     </Border.Effect>
                                                 </Border>
                                                 <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition></ColumnDefinition>
-                                                        <ColumnDefinition></ColumnDefinition>
-                                                    </Grid.ColumnDefinitions>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition></RowDefinition>
                                                         <RowDefinition></RowDefinition>
                                                     </Grid.RowDefinitions>
-                                                    <TextBlock Text="Popup" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        >
+                                                        <Hyperlink NavigateUri="http://www.google.com" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="none" FontFamily="{StaticResource Roboto-light}" Foreground="Gray">
+                                                            Create account
+                                                        </Hyperlink>
+                                                    </TextBlock>
+                                                    <TextBlock 
+                                                        Grid.Row="1"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center">
+                                                        <Hyperlink NavigateUri="http://www.google.com" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="none" FontFamily="{StaticResource Roboto-light}" Foreground="Gray">
+                                                            forget password
+                                                        </Hyperlink>
+                                                    </TextBlock>
                                                 </Grid>
-
                                             </Grid>
                                         </Border>
                                     </Popup.Child>

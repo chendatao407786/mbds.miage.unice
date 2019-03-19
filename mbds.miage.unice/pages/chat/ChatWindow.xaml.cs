@@ -25,25 +25,12 @@ namespace mbds.miage.unice.pages.chat
         {
             this.DataContext = this;
             User user1 = new User("Datao", "chendatao1126", "http://192.168.0.10:8888/tpgrails/images/chen.jpg");
+            User user2 = new User("Serina", "serina.li", "http://192.168.0.10:8888/tpgrails/images/30704260_10215948242607669_7236327905523141774_n.jpg");
             userList.Add(user1);
+            userList.Add(user2);
             InitializeComponent();
             Loaded += (s, e) => Keyboard.Focus(Sent);
         }
 
-    }
-    public class User
-    {
-        private string _name;
-        private string _id;
-        private string _srcImage;
-        public User(string name, string id, string srcImage)
-        {
-            _name = name;
-            _id = id;
-            _srcImage = srcImage;
-        }
-        public string Name { get => _name; set => _name = value; }
-        public string Id { get => _id; set => _id = value; }
-        public string SrcImage { get => _srcImage; set => _srcImage = value; }
     }
 }

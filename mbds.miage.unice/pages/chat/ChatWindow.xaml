@@ -11,23 +11,37 @@
         WindowStyle="SingleBorderWindow"
         Height="500" Width="800">
     <Window.Resources>
+        <Style x:Key="MaterialDesignListBox " BasedOn="{StaticResource MaterialDesignListBox}" TargetType="{x:Type ListBox}">
+            <Setter Property="Background" Value="Black" />
+        </Style>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0 0 0 1"/>
+            <Setter Property="materialDesign:ThemeAssist.Theme" Value="Light"/>
+        </Style>
         <DataTemplate x:Key="User-List">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Rectangle Height="40" Width="40" RadiusX="3" RadiusY="3">
-                    <Rectangle.Fill>
-                        <ImageBrush x:Name="profile_image" ImageSource="{Binding Path=SrcImage,Mode=OneWay}"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-                <TextBlock Grid.Column="1" Text="{Binding Path=Name,Mode=OneWay}" Padding="15 0 0 0"/>
-            </Grid>
+            <Grid
+                materialDesign:ListBoxAssist.IsToggle="True"
+                Margin="0 5 0 5"
+                Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ListBox}}"
+                Height = "{Binding Path=ActualHeight,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataTemplate}}">
+                    <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                    <Rectangle Height="40" Width="40" RadiusX="3" RadiusY="3">
+                        <Rectangle.Fill>
+                            <ImageBrush x:Name="profile_image" ImageSource="{Binding Path=SrcImage,Mode=OneWay}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock Grid.Column="1" Text="{Binding Path=Name,Mode=OneWay}" Padding="15 0 0 0"/>
+                </Grid>
         </DataTemplate>
     </Window.Resources>
     <Grid>
@@ -48,9 +62,11 @@
             VerticalScrollBarVisibility="Auto"
             HorizontalScrollBarVisibility="Disabled">
             <ListBox
+                Style="{DynamicResource MaterialDesignListBox}"
                 Name="ChatList"
                 BorderThickness="0"
                 Background="#E7E6E4"
+                Padding="0"
                 Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ColumnDefinition}}"
                 ItemTemplate="{StaticResource User-List}"
                 ItemsSource="{Binding UserList,Mode=OneWay}"

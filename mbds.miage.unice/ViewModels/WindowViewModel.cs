@@ -4,6 +4,7 @@ using mbds.miage.unice.pages.test;
 using mbds.miage.unice.ViewModels.Base;
 using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows;
@@ -34,6 +35,7 @@ namespace mbds.miage.unice.ViewModels
         public ICommand CloseCommand { get; set; }
         public ICommand DropDown { get; set; }
         public ICommand Connect { get; set; }
+        public ICommand Hyperlink_RequestNavigate { get; set; }
 
         public string Response { get => _response; set { _response = value; OnPropertyChanged(nameof(Response)); }}
 
@@ -47,7 +49,6 @@ namespace mbds.miage.unice.ViewModels
                 OnPropertyChanged(nameof(OuterMarginSizeThickness));
                 OnPropertyChanged(nameof(WindowRadius));
                 OnPropertyChanged(nameof(WindowCornerRadius));
-               
             };
 
             DropDown = new RelayCommand(() =>
@@ -72,6 +73,12 @@ namespace mbds.miage.unice.ViewModels
             });
             MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
             CloseCommand = new RelayCommand(() => mWindow.Close());
+            //Hyperlink_RequestNavigate = new RelayCommand(() =>
+            //{
+            //    Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            //    e.Handled = true;
+            //});
+
             Connect = new RelayCommand(() =>
             {
                 TextBox username = mWindow.Template.FindName("username", mWindow) as TextBox;
