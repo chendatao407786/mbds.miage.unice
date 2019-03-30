@@ -22,7 +22,7 @@ namespace mbds.miage.unice.ViewModels
         private int mWindowRadius = 3;
         private bool isPopupOpen = false;
         //private string url = "http://192.168.0.11:8080/api/auth";
-        private string url = "http://192.168.0.10:8080/api/auth";
+        private string url = "http://39.108.185.199:8080/api/auth";
         private string _response = "";
         public int ResizeBorder { get; set; } = 6;
         public Thickness ResizeBorderThickness { get => new Thickness(ResizeBorder + OuterMarginSize); }
