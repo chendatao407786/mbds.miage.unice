@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-D:\Documents\repo_github\mbds.miage.unice\mbds.miage.unice\obj\Debug\
+D:\Documents\repo_github\mbds.miage.unice\mbds.miage.unice\obj\Release\
 mbds.miage.unice
 none
 false
-DEBUG;TRACE
+TRACE
 D:\Documents\repo_github\mbds.miage.unice\mbds.miage.unice\App.xaml
 6-1297246571
 
@@ -16,5 +16,5 @@ D:\Documents\repo_github\mbds.miage.unice\mbds.miage.unice\App.xaml
 18-634115590
 pages\chat\ChatWindow.xaml;pages\login\MainWindow.xaml;pages\test\Test.xaml;styles\Color.xaml;styles\Fonts.xaml;styles\WindowStyle.xaml;
 
-False
+True
 
